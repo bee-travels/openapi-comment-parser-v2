@@ -92,10 +92,12 @@ function parseDescription(tag: any) {
 			items: {
 				...rootType,
 			},
+			example: undefined
 		};
 	} else {
 		schema = {
 			...rootType,
+			example: undefined
 		};
 	}
 
@@ -103,9 +105,16 @@ function parseDescription(tag: any) {
 		schema = undefined;
 	}
 
+	// Get the example value from end of the description
+	const desc = tag.description.trim().split('e.g.')
+	if (desc[1] && schema) {
+		schema.example = desc[1].trim()
+	}
+
+
 	// remove the optional dash from the description.
-	let description = tag.description.trim().replace(/^- /, '');
-	if (description === '') {
+	let description = desc[0].trim().replace(/^- /, '');
+	if (description === '' || description === '-') {
 		description = undefined;
 	}
 

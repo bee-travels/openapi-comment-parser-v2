@@ -133,6 +133,16 @@ Assuming `offset` defaults to 0 and `limit` defaults to 20, you would define the
  */
 ```
 
+### Example parameter values
+Append `e.g. value` to the end of the description to define an example value for the parameter.
+This is useful for required parameters that you want to provide an example value.
+
+```js
+/**
+ * @queryParam {integer} id - The user id to search for. e.g. 20
+ */
+```
+
 ### Enum parameters
 You can restrict a parameter to a fixed set of values by adding the `enum` to the `schema`.
 The enum values must be of the same type as the parameter data type.
